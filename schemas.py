@@ -8,14 +8,11 @@ class Block:
     miner: str
     nonce: str
     size: int
-    base_fee_per_gas: int
     difficulty: int
-    extra_data: str
     gas_limit: int
     gas_used: int
     hash: str
     state_root: str
-    transactions_root: str
     logs_bloom: str
 
 
@@ -28,33 +25,30 @@ class Transaction:
     gas_price: Optional[int] #None
     hash: str # '0x5c504ed432cb51138bcf09aa5e8a410dd4a1e204ef84bfed1be16dfba1b22060'
     input: str # '0x'
-    max_fee_per_gas: int # 2000000000
-    max_priority_fee_pee_gas: int # 1000000000
     nonce: int #0
-    to: str #'0x5DF9B87991262F6BA471F09758CDE1c0FC1De734'
+    address_to: str #'0x5DF9B87991262F6BA471F09758CDE1c0FC1De734'
     transactionIndex: int #0
     value: int #31337
 
 
+@dataclass
+class TransactionReceipt:
+    transaction_hash: str #hex_string
+    transaction_index: int #bigint
+    block_number: int  #bigint
+    gas_used: int	#bigint
+    contract_address: str #address
+    status:	int #bigint
+    address_from: str
+    address_to: str
 
-# class TransactionReceipt:
-#     transaction_hash:	hex_string
-#     transaction_index:	bigint
-#     block_hash:	hex_string
-#     block_number: 	bigint
-#     cumulative_gas_used:	bigint
-#     gas_used:	bigint
-#     contract_address:	address
-#     root:	hex_string
-#     status:	bigint
-#     effective_gas_price: bigint
-
-# class Transactionlog:
-#     log_index:	bigint
-#     transaction_hash:	hex_string
-#     transaction_index:	bigint
-#     block_hash:	hex_string
-#     block_number:	bigint
-#     address:	address
-#     data:	hex_string
-#     topics:	string
+@dataclass
+class TransactionLog:
+    log_index:	int
+    transaction_hash:	str
+    transaction_index:	int
+    block_hash:	str
+    block_number:	int
+    address:	str
+    data:	str
+    topics:	str
